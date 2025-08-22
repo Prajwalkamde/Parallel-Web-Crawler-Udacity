@@ -1,13 +1,13 @@
 {
-  "startPages": ["https://openlibrary.org/"],
+  "startPages": ["https://www.udacity.com/","https://prajwalkamde.pythonanywhere.com/"],
   "ignoredUrls": [
-    "https://openlibrary.org/about.*",
-    "https://openlibrary.org/people.*"
+    "https://blog.udacity.com/.",
+    "https://prajwalkamde.pythonanywhere.com/blog/list/.*"
   ],
   "ignoredWords": ["^.{1,3}$"],
   "parallelism": 4,
   "maxDepth": 2,
-  "timeoutSeconds": 5,
+  "timeoutSeconds": 10,
   "popularWordCount": 5,
   "profileOutputPath": "profileData.txt"
 }

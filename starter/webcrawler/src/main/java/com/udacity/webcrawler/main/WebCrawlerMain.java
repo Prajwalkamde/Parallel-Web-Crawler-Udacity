@@ -16,6 +16,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.file.Path;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public final class WebCrawlerMain {
 
@@ -36,8 +37,32 @@ public final class WebCrawlerMain {
 
     CrawlResult result = crawler.crawl(config.getStartPages());
     CrawlResultWriter resultWriter = new CrawlResultWriter(result);
+
     // TODO: Write the crawl results to a JSON file (or System.out if the file name is empty)
+      String getResultPath = config.getResultPath();
+      if (!getResultPath.isEmpty()) {
+          Path outputPath = Path.of(getResultPath);
+          resultWriter.write(outputPath);
+      } else {
+          // If no path specified, write to standard output
+          Writer output = new OutputStreamWriter(System.out);
+          resultWriter.write(output);
+      }
+
+
     // TODO: Write the profile data to a text file (or System.out if the file name is empty)
+//      if (!config.getProfileOutputPath().isEmpty()){
+//          // Get the Profile Filename from config.getProfileOutputPath()
+//          Path pathProfileOutput = Path.of(config.getProfileOutputPath());
+//          profiler.writeData(pathProfileOutput);
+//      }
+//      else{
+//          // If config.getProfileOuputPath() is empty use the Standard Output (System.out) as the file name
+//          Writer stdWriterProfileOutput = new OutputStreamWriter(System.out);
+//          profiler.writeData(stdWriterProfileOutput);
+//          stdWriterProfileOutput.flush();
+//      }
+
   }
 
   public static void main(String[] args) throws Exception {
